@@ -1,6 +1,6 @@
-let arr: number[] = [2, 45, 6, 8, 43, 4, 2, 63, 49, 67, 68, 78, 4];
+let arr: number[] = [13, 4, 5, 78, 3];
 
-function pivot(arr: number[], start: number = 0, end: number = arr.length - 1): number {
+function pivot(arr: number[], start: number = 0, end: number = arr.length): number {
     let pivot = arr[start];
     let swapIndex = start;
 
@@ -14,17 +14,27 @@ function pivot(arr: number[], start: number = 0, end: number = arr.length - 1): 
     return swapIndex;
 }
 
+function quickSort(arr: number[], left: number = 0, right: number = arr.length): number[] {
+    if (left < right) {
+        let pivotIndex = pivot(arr, left, right);
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
+    }
+    return arr;
+}
+
 
 function swap(arr: number[], index1: number, index2: number): void {
     let temp = arr[index1];
     arr[index1] = arr[index2];
     arr[index2] = temp;
 
-    console.log(temp, "temp");
+    console.log(temp, "temp2");
 
 }
 
 pivot(arr);
+console.log(quickSort(arr));
 
 
 
@@ -67,14 +77,6 @@ pivot(arr);
 
 //
 
-// function quickSort(arr: number[], left: number = 0, right: number = arr.length - 1): number[] {
-//     if (left < right) {
-//         let pivotIndex = pivot(arr, left, right);
-//         quickSort(arr, left, pivotIndex - 1);
-//         quickSort(arr, pivotIndex + 1, right);
-//     }
-//     return arr;
-// }
 
 
 
